@@ -22,6 +22,11 @@ nav a {
     box-shadow: 0 0 5px #00000017;
 }
 
+.product a {
+    text-decoration: none;
+    display: inline-block;
+}
+
 .isFav {
     padding: 0;
     box-shadow: none;
