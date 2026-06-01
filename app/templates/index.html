@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    <link rel="stylesheet" href="./static/style.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>콜렉터 쇼핑</h1>
+        <nav>
+            <a href="/">검색</a>
+            <a href="/favorites">즐겨찾기</a>
+        </nav>
+    </header>
+    <center>
+        <form id="search_form" action="/search">
+            <input type="text" placeholder="keyword" id="search_input" name="q">
+            <button>검색</button>
+        </form>
+    </center>
+    <main>
+        {% if products %}
+        <center>
+            <h3>{{products|length}}개 데이터 수집...</h3>
+        </center>
+        <section>
+            {% for product in products %}
+            <div class="product">
+                <img src="{{product.image}}" width="150px" height="150px">
+                <p>
+                    {% if product.publisher | length >10 %}
+                    {{product.publisher[:10]}}...
+                    {% else %} {{product.publisher}} {% endif %}
+                </p>
+                <p>
+                    {{product.price}}원
+                </p>
+                <form action="/favorites" method="post" class="isFav">
+                    <input type="hidden" name="keyword" value="{{product.keyword}}">
+                    <input type="hidden" name="publisher" value="{{product.publisher}}">
+                    <input type="hidden" name="price" value="{{product.price}}">
+                    <input type="hidden" name="image" value="{{product.image}}">
+                    <input type="hidden" name="next_url" value="{{next_url}}">
+                    <button type="submit" class="heart_button" title="즐겨찾기">
+                        {% if product.is_favorite %}
+                        ♥ 
+                        {% else %}
+                        ♡
+                        {% endif %}
+                    </button>
+                </form>
+            </div>
+            {% endfor %}
+        </section>
+        
+        {% else %}
+        <center>
+            <h3>{{products|length}}개 데이터 수집...</h3>
+        </center>
+        {% endif %}
+
+    </main>
+
+</body>
+</html>
