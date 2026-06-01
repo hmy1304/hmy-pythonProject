@@ -8,4 +8,5 @@ class ProductModel(Model):
     price: int
     image: str
     is_favorite: bool = False
+    link: str = ""
     model_config = {"collection": "products"}

@@ -56,6 +56,7 @@ async def read_item(request: Request, q: str):
             publisher=product.get("title", ""),
             price=int(product.get("lprice") or 0),
             image=product["image"],
+            link=product.get("link", ""),
         )
 
         if product_model.image in favorite_images:
@@ -82,6 +83,7 @@ async def toggle_favorite(
     price: int = Form(...),
     image: str = Form(...),
     next_url: str = Form("/"),
+    link: str = Form(...),
 ):
     favorite_product = await mongodb.engine.find_one(
         ProductModel,
@@ -99,6 +101,7 @@ async def toggle_favorite(
             publisher=publisher,
             price=price,
             image=image,
+            link=link,
             is_favorite=True,
         )
         await mongodb.engine.save(product)

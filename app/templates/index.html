@@ -33,11 +33,11 @@
             {% for product in products %}
             <div class="product">
                 <img src="{{product.image}}" width="150px" height="150px">
-                <p>
+                <a href="{{product.link}}" target="_blank">
                     {% if product.publisher | length >10 %}
                     {{product.publisher[:10]}}...
                     {% else %} {{product.publisher}} {% endif %}
-                </p>
+                </a>
                 <p>
                     {{product.price}}원
                 </p>
@@ -47,6 +47,7 @@
                     <input type="hidden" name="price" value="{{product.price}}">
                     <input type="hidden" name="image" value="{{product.image}}">
                     <input type="hidden" name="next_url" value="{{next_url}}">
+                    <input type="hidden" name="link" value="{{product.link}}">
                     <button type="submit" class="heart_button" title="즐겨찾기">
                         {% if product.is_favorite %}
                         ♥ 
