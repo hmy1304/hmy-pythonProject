@@ -10,10 +10,12 @@ nav {
     gap: 20px;
     min-width: var(--width-card);
     max-width: var(--width-card-wide);
+    border-bottom: 1px solid rgb(184, 184, 184);
+    margin: 0 auto;
 }
 
-nav a {
-    text-decoration: none;
+nav button {
+    padding: 5px 10px;
 }
 
 .product {
