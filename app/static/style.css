@@ -11,11 +11,23 @@ nav {
     min-width: var(--width-card);
     max-width: var(--width-card-wide);
     border-bottom: 1px solid rgb(184, 184, 184);
+    padding-bottom: 10px;
     margin: 0 auto;
 }
 
-nav button {
+nav a {
+    text-decoration: none;
     padding: 5px 10px;
+    font-size: medium;
+    font-weight: bold;
+    background-color: #118bee;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+nav a:visited {
+    color: #fff;
 }
 
 .product {
